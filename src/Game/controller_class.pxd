@@ -1,0 +1,30 @@
+cdef class GameController:
+    cdef public object controlloop, map, AIController, visualliser
+    cdef public str id
+    cdef public list instructions
+
+    cpdef str get_id(self)
+    cpdef object get_controlloop(self)
+    cpdef object get_map(self)
+    cpdef object get_visualliser(self)
+    cpdef object get_ai_controller(self)
+    cpdef void set_visualliser(self, object visualliser)
+    cpdef object get_gridpoi(self, int x, int y, int z)
+    cpdef object get_attack_gridpoi(self, int ax, int ay)
+    cpdef list get_valid_move_coords(self, int x, int y, int z)
+    cpdef list get_all_pieces(self)
+    cpdef object set_gridpoi(self, int x, int y, int z, object piece)
+    cpdef object set_attack_gridpoi(self, int ax, int ay, object board)
+    cpdef object move_piece(self, int x1, int y1, int z1, int x2, int y2, int z2)
+    cpdef object move_attack_board(self, int ax1, int ay1, int ax2, int ay2)
+    cpdef bint is_in_check(self, str team, object king_class)
+    cpdef bint is_in_checkmate(self, str team, object king_class)
+    cpdef object update_board(self, object board)
+    cpdef void run(self)
+    cpdef void clicked(self, int x, int y, int z)
+    cpdef bint is_in_valid_moves(self, list moves, int x, int y, int z, list mv_type)
+    cpdef bint is_team(self, int x, int y, int z, str teams_turn)
+    cpdef bint can_move(self, int x1, int y1, int z1, int x2, int y2, int z2, str teams_turn)
+    cpdef bint show_valid_moves(self, int x, int y, int z, str teams_turn)
+    cpdef bint do_move(self, int x1, int y1, int z1, int x2, int y2, int z2, str teams_turn, list moved_pieces, object king_class)
+    cpdef bint do_attack_board_move(self, int ax1, int ay1, int ax2, int ay2, str teams_turn)
